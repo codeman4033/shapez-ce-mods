@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    ".parcelrc": "json5"
+  },
+  "git.repositoryScanIgnoredFolders": [
+    "node_modules",
+    "shapez-ce"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "id": "better-errors",
+  "entry": "main.ts",
+  "name": "Better Errors",
+  "authors": [
+    {
+      "name": "Codeman"
+    }
+  ],
+  "version": "1.0.0",
+  "savegameResident": false
+}

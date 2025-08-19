@@ -1,0 +1,24 @@
+{
+  "name": "shapez-ce-mods",
+  "type": "module",
+  "scripts": {
+    "bundle": "node --experimental-strip-types tools/build-main.ts",
+    "watch": "node --experimental-strip-types tools/build-main.ts --watch",
+    "prettier-all": "prettier -w .",
+    "postinstall": "node --experimental-strip-types tools/setup.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@electron/asar": "^4.0.0",
+    "@types/node": "^24.0.14",
+    "@typescript-eslint/typescript-estree": "^8.38.0",
+    "chalk": "^5.5.0",
+    "esbuild": "^0.25.8",
+    "execa": "^9.6.0",
+    "prettier": "^3.6.2",
+    "sass-embedded": "^1.90.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.0",
+    "yaml": "^2.8.1"
+  }
+}

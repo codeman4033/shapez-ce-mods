@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "id": "belt-anchors",
+  "entry": "main.ts",
+  "name": "Belt Anchors",
+  "authors": [
+    {
+      "name": "Codeman"
+    }
+  ],
+  "version": "1.0.0",
+  "savegameResident": false
+}
