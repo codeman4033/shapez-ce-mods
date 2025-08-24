@@ -3,6 +3,9 @@ import { parseArgs } from "node:util";
 import { configs } from "./rollup.config.ts";
 
 import * as rollup from "rollup";
+import { createPackage } from "@electron/asar";
+import { buildDir, modFilePathToModId } from "./utils.ts";
+import * as path from "node:path";
 
 const {
   values: { watch: watching },
@@ -29,7 +32,11 @@ if (watching) {
 } else {
   for (const config of configs) {
     let bundle = await rollup.rollup(config);
-    bundle.write(config.output as rollup.OutputOptions);
-    bundle.close();
+    await bundle.write(config.output as rollup.OutputOptions);
+    await bundle.close();
+    await createPackage(
+      (config.output as rollup.OutputOptions).dir,
+      path.join(buildDir, "asar", `${modFilePathToModId(config.input as string)}.asar`)
+    );
   }
 }
