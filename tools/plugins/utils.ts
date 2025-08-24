@@ -1,4 +1,4 @@
-import type { Plugin } from "esbuild";
+import type { Plugin } from "rollup";
 
 export function definePlugin(plugin: Plugin) {
   return plugin;

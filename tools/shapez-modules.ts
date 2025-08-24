@@ -13,7 +13,7 @@ function getModules(code: string) {
       modules.push(
         statement.id.type === AST_NODE_TYPES.Identifier
           ? statement.id.name
-          : statement.id.value
+          : statement.id.value,
       );
     }
   }
@@ -21,6 +21,3 @@ function getModules(code: string) {
 }
 
 export const shapezModules = getModules(await readFile(typesPath, "utf-8"));
-
-const shapezModuleRegexString = shapezModules.join("|");
-export const shapezModuleRegex = new RegExp(shapezModuleRegexString);

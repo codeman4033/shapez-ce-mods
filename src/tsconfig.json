@@ -21,6 +21,6 @@
     "lib": ["es2022", "dom", "dom.iterable"],
     "jsx": "react-jsx",
     "jsxImportSource": "shapez/jsx-runtime",
-    "sourceMap": true,
+    "sourceMap": true
   }
 }

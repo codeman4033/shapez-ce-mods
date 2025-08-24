@@ -21,7 +21,7 @@ export function modIdToMetadataPath(id: string) {
 
 export async function mapAsync<T, R>(
   array: T[],
-  func: (value: T) => Promise<R>
+  func: (value: T) => Promise<R>,
 ) {
   return Promise.all(array.map(func));
 }

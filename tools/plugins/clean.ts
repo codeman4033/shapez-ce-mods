@@ -1,16 +1,12 @@
+import { definePlugin } from "./utils.ts";
 import { rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { definePlugin } from "./utils.ts";
 
-export function cleanPlugin() {
+export function cleanOutput() {
   return definePlugin({
-    name: "clean",
-    setup(build) {
-      build.onStart(async () => {
-        const { outdir, outfile } = build.initialOptions;
-        if (outdir && existsSync(outdir)) { await rm(outdir, { recursive: true }); }
-        if (outfile && existsSync(outfile)) await rm(outfile);
-      });
-    },
+    name: "shapez-mod-json",
+    async renderStart(outputOptions, _inputOptions) {
+      if (existsSync(outputOptions.dir)) await rm(outputOptions.dir, {recursive: true})
+    }
   });
 }

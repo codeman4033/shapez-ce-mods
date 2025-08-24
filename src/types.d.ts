@@ -16089,6 +16089,11 @@ declare module "shapez/worker-loader?inline=true&fallback=false!*" {
   export default WebpackWorker;
 }
 
+declare module "*.scss" {
+  export const path: string
+  export const code: string
+}
+
 // JSX type support - https://www.typescriptlang.org/docs/handbook/jsx.html
 // modified from https://stackoverflow.com/a/68238924
 declare namespace JSX {

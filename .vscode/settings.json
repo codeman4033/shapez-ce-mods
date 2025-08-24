@@ -7,8 +7,5 @@
   "files.associations": {
     ".parcelrc": "json5"
   },
-  "git.repositoryScanIgnoredFolders": [
-    "node_modules",
-    "shapez-ce"
-  ]
+  "git.repositoryScanIgnoredFolders": ["node_modules", "shapez-ce"]
 }

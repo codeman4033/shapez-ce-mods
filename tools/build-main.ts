@@ -1,9 +1,8 @@
 import { parseArgs } from "node:util";
 
-import { config } from "./esbuild.config.ts";
+import { configs } from "./rollup.config.ts";
 
-import * as esbuild from "esbuild";
-import { mapAsync } from "./utils.ts";
+import * as rollup from "rollup";
 
 const {
   values: { watch: watching },
@@ -16,15 +15,21 @@ const {
   },
 });
 
-const contexts = await mapAsync(config, async (config) => await esbuild.context(config))
-
 if (watching) {
-  await mapAsync(contexts, async (ctx) => await ctx.watch());
-  process.on('SIGINT', async () => {
-    await mapAsync(contexts, async (ctx) => await ctx.dispose());
-    process.exit()
-  })
+  let watcher = rollup.watch(configs);
+  watcher.on("event", (event) => {
+    if (event.code === "BUNDLE_END" && event.result) {
+      event.result.close();
+    }
+  });
+  process.on("SIGINT", async () => {
+    await watcher.close();
+    process.exit();
+  });
 } else {
-  await mapAsync(contexts, async (ctx) => await ctx.rebuild());
-  await mapAsync(contexts, async (ctx) => await ctx.dispose());
+  for (const config of configs) {
+    let bundle = await rollup.rollup(config);
+    bundle.write(config.output as rollup.OutputOptions);
+    bundle.close();
+  }
 }
